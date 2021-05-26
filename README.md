@@ -1,6 +1,6 @@
 # videojs-persist
 
-Perists volume and playback rate to local storage
+Stores volume, muted and playback rate to local storage to be restored in the next session.
 
 ## Table of Contents
 
@@ -13,6 +13,7 @@ Perists volume and playback rate to local storage
   - [`<script>` Tag](#script-tag)
   - [Browserify/CommonJS](#browserifycommonjs)
   - [RequireJS/AMD](#requirejsamd)
+- [Options](#options)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -39,6 +40,8 @@ This is the simplest case. Get the script in whatever way you prefer and include
   player.persist();
 </script>
 ```
+
+Alternatively get the files from a CDN e.g. https://unpkg.com/videojs-persist/dist/videojs-persist.min.js
 
 ### Browserify/CommonJS
 
@@ -68,6 +71,16 @@ require(['video.js', 'videojs-persist'], function(videojs) {
   player.persist();
 });
 ```
+
+## Options
+
+* `muted` persist muted. default `true`
+* `volume` persist muted. default `true`
+* `playbackRate` persist muted. default `true`
+* `restoreUnsupportedRate` restore playback when not in current rates option. default `false`
+* `key` localstorage key to use.  default `videojs-persist`
+
+By default, playbackRate will not be restored on a player that does not have that rate in its options. This is to avoid having a player playing an unexpected rate, without the control to change it. Setting `restoreUnsupportedRate` to `true` will set it regardless.
 
 ## License
 
