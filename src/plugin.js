@@ -8,7 +8,24 @@ const defaults = {
   playbackRate: true,
   volume: true,
   restoreUnsupportedRate: false,
-  key: 'ideojs-persist'
+  key: 'videojs-persist'
+};
+
+/**
+ * Checks local storage is available
+ *
+ * @return {boolean} whether available
+ */
+const localStorageAvailable = () => {
+  const key = 'videojs-persist-test-' + Math.floor(Math.random() * 10);
+
+  try {
+    window.localStorage.setItem(key, '.');
+    window.localStorage.removeItem(key);
+    return true;
+  } catch (e) {
+    return false;
+  }
 };
 
 /**
@@ -82,6 +99,11 @@ const onPlayerReady = (player, options) => {
  *           An object of options left to the plugin author to define.
  */
 const persist = function(options) {
+  if (!localStorageAvailable()) {
+    videojs.log('videojs-persist aborted. localStorage not available.');
+    return;
+  }
+
   this.ready(() => {
     onPlayerReady(this, videojs.mergeOptions(defaults, options));
   });
