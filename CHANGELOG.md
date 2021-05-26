@@ -1,3 +1,10 @@
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/mister-ben/videojs-persist/compare/v0.1.0...v0.1.1) (2021-05-26)
+
+### Bug Fixes
+
+* test for localstorage availability ([61478d2](https://github.com/mister-ben/videojs-persist/commit/61478d2))
+
 <a name="0.1.0"></a>
 # 0.1.0 (2021-05-26)
 
