@@ -211,7 +211,7 @@ QUnit.test('playback restored if within rates', function(assert) {
   const sandbox = sinon.createSandbox();
   const spy = sandbox.spy(this.player, 'playbackRate');
 
-  this.player.options_.playbackRates = [1, 1.5];
+  this.player.playbackRates([1, 1.5]);
   this.player.persist({key});
   this.clock.tick(1);
 

@@ -105,7 +105,7 @@ const persist = function(options) {
   }
 
   this.ready(() => {
-    onPlayerReady(this, videojs.mergeOptions(defaults, options));
+    onPlayerReady(this, (videojs.obj ? videojs.obj.merge : videojs.mergeOptions)(defaults, options));
   });
 };
 
