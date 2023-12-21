@@ -1,6 +1,6 @@
 {
   "name": "videojs-persist",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Perists volume and playback rate to local storage",
   "main": "dist/videojs-persist.cjs.js",
   "module": "dist/videojs-persist.es.js",
