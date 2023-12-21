@@ -4,16 +4,5 @@
     "node_modules/sinon/pkg/sinon.js",
     "node_modules/video.js/dist/video.js",
     "test/dist/bundle.js"
-  ],
-  "launch_in_ci": ["SafariApplescript"],
-  "launchers": {
-    "SafariApplescript": {
-      "protocol": "browser",
-      "exe": "osascript",
-      "args": [
-        "-e",
-        "tell application \"Safari\"\nactivate\nopen location \"<url>\"\nend tell\ndelay 3000"
-      ]
-    }
-  }
+  ]
 }
