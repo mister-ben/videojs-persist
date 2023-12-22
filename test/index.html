@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test'em</title>
+    <script src="//code.jquery.com/qunit/qunit-1.20.0.js"></script>
+    <script src="/testem.js"></script>
+    <script src="node_modules/sinon/pkg/sinon.js"></script>
+    <script src="node_modules/video.js/dist/video.js"></script>
+    <script src="test/dist/bundle.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.20.0.css" />
+    <script>
+      Testem.afterTests(
+        function(config, data, callback) {
+          var coverage = JSON.stringify(window.__coverage__);
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+              callback();
+            }
+          };
+          xhr.open('POST', '/coverage', true);
+          xhr.send(coverage);
+        });
+    </script>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+  </body>
+</html>

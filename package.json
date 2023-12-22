@@ -20,7 +20,7 @@
     "lint": "vjsstandard",
     "server": "karma start scripts/karma.conf.js --singleRun=false --auto-watch",
     "start": "npm-run-all -p server watch",
-    "test": "npm-run-all lint build-test && testem ci --file scripts/testem.json",
+    "test": "npm-run-all lint build-test && testem ci --file scripts/testem.js",
     "posttest": "shx cat test/dist/coverage/text.txt",
     "update-changelog": "conventional-changelog -p videojs -i CHANGELOG.md -s",
     "preversion": "npm test",
@@ -45,7 +45,8 @@
       "cjs",
       "dist",
       "docs",
-      "test/dist"
+      "test/dist",
+      "coverage"
     ]
   },
   "files": [
@@ -78,6 +79,7 @@
   "devDependencies": {
     "@babel/runtime": "^7.23.6",
     "@videojs/generator-helpers": "^3.2.0",
+    "istanbul": "^0.4.5",
     "jsdoc": "^4.0.2",
     "karma": "^6.4.2",
     "rollup": "^2.79.1",

@@ -2,7 +2,23 @@ import videojs from 'video.js';
 import {version as VERSION} from '../package.json';
 import window from 'global/window';
 
+/**
+ * @typedef   {object} PersistOptions
+ *            Options for the persist plugin
+ * @property  {boolean} [options.muted=true]
+ *            Whether to store muted state
+ * @property  {boolean} [options.playbackRate=true]
+ *            Whether to save the playback rate
+ * @property  {boolean} [options.volume=true]
+ *            Whether to store the volume
+ * @property  {boolean} [options.restoreUnsupportedRate=false]
+ *            Whether to restore a playback rate when it is not a rate that would be displayed in the player control
+ * @property  {string} [options.key='videojs-persist']
+ *            A prefix to use for the local storage key
+ */
+
 // Default options for the plugin.
+/** @type {PersistOptions} */
 const defaults = {
   muted: true,
   playbackRate: true,
@@ -87,16 +103,12 @@ const onPlayerReady = (player, options) => {
 };
 
 /**
- * A video.js plugin.
- *
- * In the plugin function, the value of `this` is a video.js `Player`
- * instance. You cannot rely on the player being in a "ready" state here,
- * depending on how the plugin is invoked. This may or may not be important
- * to you; if not, remove the wait for "ready"!
+ * A video.js plugin to use localstorage to save player settings in localstorage
  *
  * @function persist
- * @param    {Object} [options={}]
- *           An object of options left to the plugin author to define.
+ * @param    {PersistOptions} [options={}]
+ *           Persist plugin options
+
  */
 const persist = function(options) {
   if (!localStorageAvailable()) {
